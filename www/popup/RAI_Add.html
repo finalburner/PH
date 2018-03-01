@@ -1,0 +1,80 @@
+<md-dialog ng-controller="AppCtrl" >
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <p class= "poptitle">Ajouter une raison</p>
+        <span flex></span>
+        <!-- <md-button class="md-icon-button" >
+
+        </md-button> -->
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content" style="padding:0!important">
+
+        <div  class="col"  style="min-height: 50px;min-width: 500px;padding :0;" >
+      <!-- <input ng-model ="tmp_event.start._i"/> -->
+    <div class="row">
+      <div class="col col-20" style="padding: 27px 0 0 12px ;min-width:50px;font-size:16px">Raison</div>
+      <!-- <input datetime-picker ng-model="model" /> -->
+      <div class="col" style="padding:18px 0 0 10px;font-weight:600;font-size:16px">
+        <!-- <input style="padding-left:5px;width:200px;" ng-model ="Edit_Raison.raison"/> -->
+        <md-input-container style="padding-left:5px;width:350px;margin:0;">
+        <label>Raison</label>
+        <input ng-model="Edit_Raison.raison" required>
+      </md-input-container>
+    </div>
+    </div>
+
+
+    <div class="row">
+      <!-- <div class="col col-10" style="padding: 5px 0 0 5px;min-width:50px;font-size:16px">Fin</div> -->
+      <!-- <div class="col" ng-if="exploc" style="padding:0 0 0 10px;max-height:25px;"><md-datetime ng-model="tmp_event.end" ></md-datetime></div> -->
+      <!-- <div class="col" ng-if="!exploc" style="padding:27px 0 0 120px;font-weight:600;font-size:16px">{{initdate.end}}</div> -->
+      <!-- <md-input-container flex-gt-md="30">
+              <label>Timepicker Only</label>
+              <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime"
+              placeholder="Date" show-todays-date="" min-date="date" ng-model="tmp_event.start" class="md-input" lang="fr"
+              readonly="readonly">
+          </md-input-container> -->
+     </div>
+
+       <div class="row">
+         <!-- <md-checkbox ng-model="exploc" class="indigo" style="margin:25px 0 0 22px;">Exception Locale
+         </md-checkbox> -->
+
+     </div>
+      <!-- <md-input-container class="md-input-has-placeholder">
+              <label>Start Date/Time</label>
+
+              <input mdc-datetime-picker="" date="true" time="true" type="text" short-time = "false"
+              placeholder="" ng-model="tmp_event.start._i" class=" md-input" week-start = '1'
+              readonly="readonly" id="input_0">
+              <div class="md-errors-spacer"></div>
+            </md-input-container>
+
+            <md-input-container class="md-input-has-placeholder">
+                <label>Start Date/Time</label>
+                <input mdc-datetime-picker="" date="true" time="true" type="text" short-time = "false"
+                placeholder=""  ng-model="tmp_event.end._i" class=" md-input" week-start = '1'
+                readonly="readonly" id="input_0">
+                <div class="md-errors-spacer"></div>
+              </md-input-container> -->
+
+        </div>
+
+
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <!-- <md-button ng target="_blank" md-autofocus>
+        More on Wikipedia
+      </md-button> -->
+      <span flex></span>
+      <md-button ng-click="Close_Edit_EG()">Annuler</md-button>
+      <md-button type="submit" ng-disabled="!Edit_Raison.raison" ng-click="Add_RAI_Apply()" md-autofocus>Ajouter</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

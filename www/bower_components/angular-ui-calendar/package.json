@@ -1,0 +1,92 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "angular-ui-calendar@git+https://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+        "scope": null,
+        "escapedName": "angular-ui-calendar",
+        "name": "angular-ui-calendar",
+        "rawSpec": "git+https://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+        "spec": "git+https://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+          "sshUrl": "git+ssh://git@github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+          "httpsUrl": "git+https://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+          "gitUrl": "git://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+          "shortcut": "github:angular-ui/ui-calendar#81069d1945bea8ad1727cf5f44096f58d872a96b",
+          "directUrl": "https://raw.githubusercontent.com/angular-ui/ui-calendar/81069d1945bea8ad1727cf5f44096f58d872a96b/package.json"
+        }
+      },
+      "C:\\Users\\ahmaidouch\\Desktop\\PH"
+    ]
+  ],
+  "_from": "git+https://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+  "_id": "angular-ui-calendar@0.9.0-beta.1",
+  "_inCache": true,
+  "_location": "/angular-ui-calendar",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "angular-ui-calendar@git+https://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+    "scope": null,
+    "escapedName": "angular-ui-calendar",
+    "name": "angular-ui-calendar",
+    "rawSpec": "git+https://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+    "spec": "git+https://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+      "sshUrl": "git+ssh://git@github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+      "httpsUrl": "git+https://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+      "gitUrl": "git://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+      "shortcut": "github:angular-ui/ui-calendar#81069d1945bea8ad1727cf5f44096f58d872a96b",
+      "directUrl": "https://raw.githubusercontent.com/angular-ui/ui-calendar/81069d1945bea8ad1727cf5f44096f58d872a96b/package.json"
+    }
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+  "_shasum": "9c01092923ed11c6618b4cd00796013badf4bfb8",
+  "_shrinkwrap": null,
+  "_spec": "angular-ui-calendar@git+https://github.com/angular-ui/ui-calendar.git#81069d1945bea8ad1727cf5f44096f58d872a96b",
+  "_where": "C:\\Users\\ahmaidouch\\Desktop\\PH",
+  "author": {
+    "name": "https://github.com/angular-ui/ui-calendar/graphs/contributors"
+  },
+  "bugs": {
+    "url": "https://github.com/angular-ui/ui-calendar/issues"
+  },
+  "dependencies": {},
+  "description": "A complete AngularJS directive for the Arshaw FullCalendar.",
+  "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-contrib-jshint": "~0.2",
+    "grunt-karma": "0.7.0",
+    "karma": "~0.10",
+    "karma-chrome-launcher": "0.1",
+    "karma-coverage": "~0.1",
+    "karma-firefox-launcher": "0.1",
+    "karma-jasmine": "0.1",
+    "load-grunt-tasks": "~0.2",
+    "matchdep": "~0.1"
+  },
+  "gitHead": "81069d1945bea8ad1727cf5f44096f58d872a96b",
+  "homepage": "http://angular-ui.github.com",
+  "license": "MIT",
+  "main": "src/calendar.js",
+  "name": "angular-ui-calendar",
+  "optionalDependencies": {},
+  "readme": "# ui-calendar directive [![Build Status](https://travis-ci.org/angular-ui/ui-calendar.svg?branch=master)](https://travis-ci.org/angular-ui/ui-calendar)\r\n\r\nA complete AngularJS directive for the Arshaw FullCalendar.\r\n\r\n# Requirements\r\n- ([AngularJS](http://code.angularjs.org/1.2.1/angular.js))\r\n- ([fullcalendar.js 2.0 and it's dependencies](http://arshaw.com/fullcalendar/download/))\r\n- optional - ([gcal-plugin](http://arshaw.com/js/fullcalendar-1.5.3/fullcalendar/gcal.js))\r\n\r\n# Testing\r\n\r\nWe use karma and grunt to ensure the quality of the code.\r\n\r\n    npm install -g grunt-cli\r\n    npm install\r\n    bower install\r\n    grunt\r\n\r\n# Usage\r\n\r\nWe use [bower](http://twitter.github.com/bower/) for dependency management.  Add\r\n\r\n    dependencies: {\r\n        \"angular-ui-calendar\": \"latest\"\r\n    }\r\n\r\nTo your `components.json` file. Then run\r\n\r\n    bower install\r\n\r\nThis will copy the ui-calendar files into your `components` folder, along with its dependencies. Load the script and style files in your application:\r\n\r\n    <link rel=\"stylesheet\" href=\"bower_components/fullcalendar/fullcalendar.css\"/>\r\n    <script type=\"text/javascript\" src=\"bower_components/jquery/jquery.js\"></script>\r\n    <script type=\"text/javascript\" src=\"bower_components/jquery-ui/ui/jquery-ui.js\"></script>\r\n    <script type=\"text/javascript\" src=\"bower_components/angular/angular.js\"></script>\r\n    <script type=\"text/javascript\" src=\"bower_components/angular-ui-calendar/src/calendar.js\"></script>\r\n    <script type=\"text/javascript\" src=\"bower_components/fullcalendar/fullcalendar.js\"></script>\r\n    <script type=\"text/javascript\" src=\"bower_components/fullcalendar/gcal.js\"></script>\r\n\r\nAdd the calendar module as a dependency to your application module:\r\n\r\n    var myAppModule = angular.module('MyApp', ['ui.calendar'])\r\n\r\nApply the directive to your div elements. The calendar must be supplied an array of decoumented event sources to render itself:\r\n\r\n    <div ui-calendar ng-model=\"eventSources\"></div>\r\n\r\nDefine your model in a scope e.g.\r\n\r\n    $scope.eventSources = [];\r\n\r\n## Options\r\n\r\nAll the Arshaw Fullcalendar options can be passed through the directive. This even means function objects that are declared on the scope.\r\n\r\n    myAppModule.controller('MyController', function($scope) {\r\n        /* config object */\r\n        $scope.uiConfig = {\r\n          calendar:{\r\n            height: 450,\r\n            editable: true,\r\n            header:{\r\n              left: 'month basicWeek basicDay agendaWeek agendaDay',\r\n              center: 'title',\r\n              right: 'today prev,next'\r\n            },\r\n            dayClick: $scope.alertEventOnClick,\r\n            eventDrop: $scope.alertOnDrop,\r\n            eventResize: $scope.alertOnResize\r\n          }\r\n        };\r\n    });\r\n\r\n    <div ui-calendar=\"uiConfig.calendar\" ng-model=\"eventSources\">\r\n\r\n## Working with ng-model\r\n\r\nThe ui-calendar directive plays nicely with ng-model.\r\n\r\nAn Event Sources objects needs to be created to pass into ng-model. This object's values will be watched for changes. If a change occurs, then that specific calendar will call the appropriate fullCalendar method.\r\n\r\nThe ui-calendar directive expects the eventSources object to be any type allowed in the documentation for the fullcalendar. [docs](http://arshaw.com/fullcalendar/docs/event_data/Event_Source_Object/)\r\nNote that all calendar options which are functions that are passed into the calendar are wrapped in an apply automatically.\r\n\r\n## Accessing the calendar object\r\n\r\nIt is possible to access a specific calendar object by declaring a name for it on the uiCalendar directive. In this next line we are naming the calendar 'myCalendar'. This will be attached to the uiCalendarConfig constant object, that can be accessed via DI.\r\n\r\n    <div ui-calendar=\"calendarOptions\" ng-model=\"eventSources\" calendar=\"myCalendar\">\r\n\r\nNow the calendar object is available in uiCalendarConfig.calendars:\r\n\r\n    uiCalendarConfig.calendars.myCalendar\r\n\r\nThis allows you to declare any number of calendar objects with distinct names.\r\n\r\n## Custom event rendering\r\n\r\nYou can use fullcalendar's `eventRender` option to customize how events are rendered in the calendar.\r\nHowever, only certain event attributes are watched for changes (they are `id`, `title`, `url`, `start`, `end`, `allDay`, and `className`).\r\n\r\nIf you need to automatically re-render other event data, you can use `calendar-watch-event`.\r\n`calendar-watch-event` expression must return a function that is passed `event` as argument and returns a string or a number, for example:\r\n\r\n    $scope.extraEventSignature = function(event) {\r\n       returns \"\" + event.price;\r\n    }\r\n\r\n    <ui-calendar calendar-watch-event=\"extraEventSignature\" ... >\r\n    // will now watch for price\r\n\r\n## Watching the displayed date range of the calendar\r\n\r\nThere is no mechanism to $watch the displayed date range on the calendar due to the JQuery nature of fullCalendar.  If you want\r\nto track the dates displayed on the calendar so you can fetch events outside the scope of fullCalendar (Say from a caching store\r\nin a service, instead of letting fullCalendar pull them via AJAX), you can add the viewRender callback to the calendar config.\r\n\r\n    $scope.calendarConfig = {\r\n        calendar:{\r\n            height: \"100%\",\r\n            ...\r\n            viewRender: function(view, element) {\r\n                $log.debug(\"View Changed: \", view.visStart, view.visEnd, view.start, view.end);\r\n            }\r\n        }\r\n    };\r\n\r\n## Documentation for the Calendar\r\n\r\nThe calendar works alongside of all the documentation represented [here](http://arshaw.com/fullcalendar/docs)\r\n\r\n## PR's R always Welcome\r\nMake sure that if a new feature is added, that the proper tests are created.\r\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/angular-ui/ui-calendar.git"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "version": "0.9.0-beta.1"
+}

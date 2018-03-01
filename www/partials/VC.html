@@ -1,0 +1,141 @@
+<div class="row " style="padding:0 !important" ng-init="init_VC()" style="max-height: 100px!important;" >
+
+  <div ng-if="PHavecList" ng-init="init_List()" class ="col col-20" style="padding:0 !important;max-width:360px !important;margin: 0;background-color: #F7F7F7 !important">
+
+  <div class="row" style="padding:0 !important">
+     <label class="item item-input " style="width:100%;margin: 10px 16px 10px 16px;" >
+     <i class="icon ion-search placeholder-icon"></i>
+     <input style="height:15px;padding: 0 30px 0 0 ;" type="text" placeholder="Recherche" ng-model="search" ng-change="filter(search)"  ng-click="search='';filter('');"  ng-model-options="{debounce: 200}">
+    </label>
+  </div>
+
+    <div class="row"  style="padding:0 !important; margin : 0 0 0 5px;background-color='#F7f7f7';width:360px!important">
+      <!-- <ion-content scroll = 'false' on-scroll="getScrollPosition()" delegate-handle="listct" style="margin: 50px 0 0 5px; max-height:93vh ;max-width:360px!important;" > -->
+
+      <ion-scroll on-scroll="getScrollPosition()" delegate-handle="listct" style="margin: 3px 0 0 5px; height:93vh ;width:350px!important;overflow-scroll:false;" has-bouncing="false">
+        <ion-list scroll="false" style="height:93vh!important">
+            <ion-item  style= "padding:0; max-width:350px !important;" ng-class="isItemExpanded(item) ? 'expand-itemct2' : 'expand-itemct'"
+             ng-repeat="item in $root.List_CT "  class="item col">
+
+                   <div class="row PH_CT_bar" ng-click="expand_CT(item)" >
+                       <div class="col col-80 PH_CT_Type">CT {{::item.CT}} </div>
+                       <div class="col col-20 PH_arrow"><i class="icon AL_bar_icon" ng-class="isItemExpanded(item) ? 'ion-chevron-up' : 'ion-chevron-down'"></i></div>
+                   </div>
+                   <div ng-if="isItemExpanded(item)" ng-repeat="item_GF in item.GF" >
+                         <div ng-class="{'GF_Selected': $root.GF_Selected == item_GF.ID}"  style="padding:0" class = "row PH_GF" ng-click="l(item_GF);PH_CT_GF(item_GF.ID,item_GF.E,item_GF.I,item.CT,item_GF.DEFCOM)" >
+                         <p class="col col-80" style="padding:4px 0 0 0 ">{{::item_GF.I}}</p>
+                         <i ng-show='item_GF.DEFCOM' style="margin:2px 0 0 0 " class="icon ion-alert-circled icon_alert_def col col-10"></i>
+                         </div>
+                   </div>
+         </ion-item>
+        </ion-list>
+      </ion-scroll>
+     </div>
+
+  </div>
+
+<div class ="col " ng-class="{true: 'calendar-max'}[PHavecList]" style="padding:0 !important;background-color:#E0E0E0!important">
+
+  <div ng-if="PHavecList" class="row  row1">
+
+    <button class = "btn btn1 btn1-active" type = "button" ng-click = "goto('VC')" >Planning</button>
+    <button ng-disabled = '!$root.DROITS.FPHADM' class = "btn btn1" type = "button" ng-click = "goto('EG')" >Exceptions globales</button>
+    <button ng-disabled = '!$root.DROITS.FPHADM' class = "btn btn1" type = "button" ng-click = "goto('AD')" >Administration</button>
+    <button ng-disabled = "!$root.PTE_Selected || $root.DEFCOM || !$root.DROITS.FPHADM" class = "btn btn1" type = "button" ng-click = "Import_PH()" >Importer PH</button>
+
+  </div>
+
+
+  <div class="row row2">
+
+      <div class="col col-20" style="padding:5px 0 5px 0">
+        <button class = "btn btn_menu row" type = "button" ng-click= "pop_open($event)">
+          <div class="col col-80 text_N1">{{::titre_vue}}</div>
+          <div class="col col-20 arrow_N1"><i class="icon AL_bar_icon" ng-class="popisOpen ? 'ion-android-arrow-dropup' : 'ion-android-arrow-dropdown'"></i></div>
+        </button>
+
+      </div>
+
+      <div class="col col-20" style="padding:5px 0 5px 0">
+
+        <div ng-if="$root.GF_Selected && $root.DROITS.FPHADM" style="width:100%" ng-dropdown-multiselect="" options="EG_GF" selected-model="List_EG_GF_Model"
+        extra-settings="List_EG_GF_Options" events="List_EG_GF_Events" translation-texts="List_EG_GF_Translation">
+
+        <toggle-dropdown>
+          <span class="btn btn1 row">
+            <div class="col col-80 text_N1">Application EG</div>
+            <div class="col col-20 arrow_N1"><i class="icon AL_bar_icon" ng-class="popisOpen ? 'ion-android-arrow-dropup' : 'ion-android-arrow-dropdown'"></i></div>
+          </span>
+        </toggle-dropdown>
+      </div>
+
+       </div>
+        <!-- on-select="ctrl.multiPreSelectionEvent(option)"
+        on-unselect="ctrl.clearMultiPre()" -->
+
+
+            <!-- ng-dropdown-multiselect="" options="transclusionData" selected-model="transclusionModel"
+            extra-settings="transclusionSettings">
+
+        <toggle-dropdown>
+          <button class = "btn btn_menu row custom-trigger" type = "button" >
+            <span class="custom-trigger">My Custom trigger</span>
+             <div class="col col-80 text_N1">Exceptions globales</div>
+            <div class="col col-20 arrow_N1"><i class="icon AL_bar_icon" ng-class="popisOpen ? 'ion-android-arrow-dropup' : 'ion-android-arrow-dropdown'"></i></div>
+          </button>
+        </toggle-dropdown> -->
+      <!-- </div> -->
+
+      <div class="col " style="padding:5px 0 5px 0;min-width:350px!important" >
+        <button class = "btn fleche "  type = "button" ng-click ="prevCalendar()" ><</button>
+        <button class = "btn btn2"  type = "button" ng-click ="today()">{{title}}</button>
+        <button class = "btn fleche" type = "button" ng-click = "nextCalendar()" >></button>
+      </div>
+
+
+      <div class="col col-50 " style="padding:5px 0 5px 0" ng-if="!$root.GF_Selected" ></div>
+
+      <div class="col col-30 " style="padding:3px 0 5px 0"  ng-if="$root.GF_Selected" >
+
+      <div class='row PH_INFO' >
+         CT {{$root.CT_Selected}}
+      </div>
+      <div class='row PH_INFO' >
+         {{$root.GF_Name_Selected}}
+      </div>
+
+      </div>
+
+      <div class="col" style="padding:2px 0 5px 0"ng-if="$root.GF_Selected">
+
+          <md-button ng-if ="$root.PH_Actif"  style ="margin:3px 0 6px 0" flex-gt-md="15" flex="30"
+                    md-colors="{background: 'green'}" md-colors-watch="false"
+                    ng-disabled="true" >Importé</md-button>
+
+          <md-button ng-if ="!$root.PH_Actif"
+                    md-colors="{background: 'red'}" style ="margin:3px 0 6px 0" md-colors-watch="false"
+                    ng-disabled="true" >Non importé</md-button>
+
+          <md-button ng-if ="$root.PH_Actif == true && !$root.PH_Modifie" style ="margin:3px 0 6px 0" flex-gt-md="15" flex="30"
+                    md-colors="{background: 'green'}" md-colors-watch="false"
+                    ng-disabled="true" >A jour</md-button>
+          <md-button ng-if ="$root.PH_Actif == true && $root.PH_Modifie"
+                    md-colors="{background: 'red'}" style ="margin:3px 0 6px 0" md-colors-watch="false"
+                    ng-disabled="true" >Modifié</md-button>
+
+          </div>
+
+</div>
+
+
+
+<div class="container">
+<div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources" calendar="myCalendar">
+</div>
+
+
+</div>
+
+</div>
+
+</div>

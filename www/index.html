@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html >
+<head>
+
+    <!-- Meta-Information -->
+    <title>IHM Programme Horaire</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <meta name="description" content="Eiffage">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Our Website CSS Styles -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+    <link rel="stylesheet" type="text/css" href="css/ionic.css" >
+    <link rel="stylesheet" type="text/css" href="css/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="css/md-time-picker.css">
+    <link rel="stylesheet" type="text/css" href="css/material-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/angular-moment-picker.min.css">
+    <link rel="stylesheet" type="text/css" href="css/angular-notify.min.css">
+
+
+  <!-- Bloquer le clique droit  -->
+    <script type="text/javascript">
+        document.oncontextmenu = new Function("return false");
+    </script>
+
+</head>
+
+<body ng-app="myApp" >
+
+
+<ui-view></ui-view>
+<!-- Vendor: Angular, followed by our custom Javascripts -->
+<!-- <script type="text/javascript" src="js/jquery.slim.min.js"></script> -->
+<script src="js/ionic.bundle.min.js"></script>
+<!-- <script src="js/angular-ui-router.min.js"></script> -->
+<script src="js/main.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/Ctrl_Error.js"></script>
+
+<!-- <script src="js/EG.js"></script> -->
+<script src="js/angular-material.min.js"></script>
+<script src="js/angular-animate.min.js"></script>
+<script src="js/angular-aria.min.js"></script>
+<script src="js/angular-messages.min.js"></script>
+
+<script src="js/md_datetime.js"></script>
+<script src="js/param.js"></script>
+<script src="js/moment-locales.js"></script>
+<script src="js/angular-moment-picker.min.js"></script>
+<script src="js/md-time-picker.js"></script>
+<script src="js/contextMenu.js"></script>
+<script src="js/angular-notify.min.js"></script>
+
+<script src="js/dropdown-multiselect.min.js"></script>
+<!-- <script src="js/bootstrap.min.js"></script> -->
+<!-- jquery, moment, and angular have to get included before fullcalendar -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+<script src="bower_components/fullcalendar/dist/gcal.js"></script>
+<script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+.md-datetime-picker-reset {
+  vertical-align: middle;
+}
+
+.md-timepicker-widget {
+  position: relative;
+  display: inline-block;
+  outline: none;
+
+  .md-errors-spacer {
+    display: none;
+  }
+
+  .md-datepicker-triangle-button {
+    top: 6px;
+  }
+}
+
+.md-timepicker-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #eee;
+  width: 240px;
+  height: 288px;
+  overflow: hidden;
+  z-index: 99;
+
+  &.ng-enter {
+    transition: transform 0.1s ease-out;
+  }
+
+  &.ng-enter {
+    transform: translate(-50%, -50%) scale(0.8) translate(50%, 50%);
+  }
+
+  &.ng-enter-active {
+    transform: scale(1);
+  }
+}
+
+.md-timepicker-time {
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.md-timepicker-time-hour,
+.md-timepicker-time-minute {
+  font-size: 32px;
+  cursor: pointer;
+  outline: none;
+
+  &.selected {
+    font-weight: 600;
+    color: #fff;
+  }
+}
+
+.md-timepicker-clock {
+  position: absolute;
+  left: 0;
+  top: 64px;
+  background-color: #ddd;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 12px 20px;
+
+  &.ng-leave {
+    transition: all .3s ease-out;
+    z-index: 99;
+  }
+
+  &.ng-leave {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  &.ng-leave-active {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.md-timepicker-clock-hour,
+.md-timepicker-clock-minute,
+.md-timepicker-hour-number,
+.md-timepicker-minute-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.md-timepicker-clock-hour,
+.md-timepicker-clock-minute {
+  cursor: pointer;
+}
+
+.md-timepicker-hour-number,
+.md-timepicker-minute-number {
+  transform: translate(-50%, -50%);
+
+  .selected > &::after,
+  &:hover::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 14px solid #ccc;
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  .selected > &::after {
+    border: 14px solid #aaa;
+  }
+}

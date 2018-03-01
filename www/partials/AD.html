@@ -1,0 +1,77 @@
+<div  class="row" ng-init="init_AD()"  style="padding:0 !important" >
+
+  <div ng-if="PHavecList" ng-init="init_List()" class ="col col-20" style="padding:0 !important;max-width:360px !important;margin: 0;background-color: #F7F7F7 !important">
+
+  <div class="row" style="padding:0 !important">
+     <label class="item item-input " style="width:100%;margin: 10px 16px 10px 16px;" >
+     <i class="icon ion-search placeholder-icon"></i>
+     <input style="height:15px;padding: 0 30px 0 0 ;" type="text" placeholder="Recherche" ng-model="search" ng-change="filter(search)" ng-click="search='';filter('');"  ng-model-options="{debounce: 300}">
+    </label>
+  </div>
+
+    <div class="row"  style="padding:0 !important;margin : 0 0 0 5px;background-color='#F7f7f7';width:360px!important">
+      <!-- <ion-content scroll = 'false' on-scroll="getScrollPosition()" delegate-handle="listct" style="margin: 50px 0 0 5px; max-height:93vh ;max-width:360px!important;" > -->
+
+      <ion-scroll on-scroll="getScrollPosition()" delegate-handle="listct" style="margin: 3px 0 0 5px; height:93vh ;width:350px!important;overflow-scroll:false;" has-bouncing="false">
+        <ion-list scroll="false" style="height:93vh!important">
+            <ion-item  style= "padding:0; max-width:350px !important;" ng-class="isItemExpanded(item) ? 'expand-itemct2' : 'expand-itemct'"
+             ng-repeat="item in $root.List_CT "  class="item col"   >
+
+                   <div class="row PH_CT_bar" ng-click="expand_CT(item)" >
+                       <div class="col col-80 PH_CT_Type">CT {{::item.CT}} </div>
+                       <div class="col col-20 PH_arrow"><i class="icon AL_bar_icon" ng-class="isItemExpanded(item) ? 'ion-chevron-up' : 'ion-chevron-down'"></i></div>
+                   </div>
+                   <div ng-if="isItemExpanded(item)" ng-repeat="item_GF in item.GF" >
+                         <div ng-class="{'GF_Selected': $root.GF_Selected == item_GF.ID}"  style="padding:0" class = "row PH_GF" ng-click="l(item_GF);PH_CT_GF(item_GF.ID,item_GF.E,item_GF.I,item.CT,item_GF.DEFCOM)" >
+                         <p class="col col-80" style="padding:4px 0 0 0 ">{{::item_GF.I}}</p>
+                         <i ng-show='item_GF.DEFCOM' style="margin:2px 0 0 0 " class="icon ion-alert-circled icon_alert_def col col-10"></i>
+                         </div>
+                   </div>
+         </ion-item>
+        </ion-list>
+      </ion-scroll>
+     </div>
+
+  </div>
+
+<div class ="col " ng-class="{true: 'calendar-max'}[PHavecList]" style="padding:0 !important;background-color:#E0E0E0!important">
+<div class="row row-flex row-flex-wrap row1">
+  <button  class = "btn btn1" type = "button" ng-click = "goto('VC')">Planning</button>
+  <button  ng-disabled = '!$root.DROITS.FPHADM' class = "btn btn1" type = "button" ng-click = "goto('EG')" >Exceptions globales</button>
+  <button  ng-disabled = '!$root.DROITS.FPHADM' class = "btn btn1 btn1-active" type = "button" ng-click = "goto('AD')" >Administration</button>
+
+</div>
+
+<div class="row">
+
+<div class="col" style="max-width:300px">
+
+<div class="row row_search_EG" >
+   <label class="item item-input search-row " style="width : 245px !important;height:40px !important;padding:0 0 0 10px!important">
+   <i style="padding: 3px 0 0 0 ;"class="icon ion-search placeholder-icon"></i>
+   <input style="padding : 0 0 0 5px ;"  type="text" placeholder="Recherche" ng-model="search1"  ng-click="search1 ='' ">
+ </label>
+</div>
+
+<div class="row"style="max-height: 500px;max-width:270px">
+<ion-scroll  style="max-height: 500px;max-width:270px">
+<ion-list  >
+  <ion-item context-menu="menuOptions_RAI" ng-repeat="item in $root.Raison | filter : search1 " ng-click="Set_RAI(item)" style="min-width:250px;" >
+    <p ng-class="{'item-clicked': isEGClicked(item)}" >{{::item.raison}}</p>
+    <!-- <ion-option-button class="bouton-assertive"  ng-click="Del_RAI(item)">Supprimer</ion-option-button>
+    <ion-option-button class="button-positive"   ng-click="Edit_RAI(item)">Modifier</ion-option-button> -->
+  </ion-item>
+</ion-list>
+</ion-scroll>
+</div>
+
+<div class="row button_EG" style="max-width:270px;margin:10px 0 0 40px;">
+<button class="button button-light" ng-click="Add_RAI()">Ajouter une Raison</button>
+</div>
+
+</div>
+
+
+</div>
+</div>
+</div>

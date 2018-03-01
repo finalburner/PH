@@ -1,0 +1,88 @@
+<md-dialog ng-controller="AppCtrl" >
+  <form novalidate ng-cloak name="myForm">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <p ng-if="S==1" class= "poptitle">Ajouter une tranche récurrente</p>
+        <p ng-if="S==2" class= "poptitle">Ajouter une exception locale</p>
+
+        <span flex></span>
+        <!-- <md-button class="md-icon-button" >
+
+        </md-button> -->
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content" style="padding:0!important">
+
+    <div  class="col"  style="min-height: 220px;min-width: 400px;padding :0;" >
+      <!-- <input ng-model ="tmp_event.start._i"/> -->
+
+    <div class="row" style="padding-left:25px">
+      <div class="col col-33" style="padding: 27px 0 0 12px ;min-width:50px;font-size:16px">Heure Début  </div>
+
+      <div class="col"  style="padding:0px 0 0 16px;font-weight:600;font-size:16px">
+      <md-time-picker ng-model="New_EL.heureDebut" message="message" no-meridiem no-auto-switch></md-time-picker>
+
+  </div>
+    </div>
+    <div class="row" style="padding-left:25px">
+      <div class="col col-33" style="padding: 27px 0 0 12px ;min-width:50px;font-size:16px">Heure Fin  </div>
+      <!-- <input datetime-picker ng-model="model" /> -->
+      <div class="col"  style="padding:0 0 0 16px;font-weight:600;font-size:16px">
+        <md-time-picker ng-model="New_EL.heureFin" message="message" no-meridiem no-auto-switch></md-time-picker>
+              </div>
+  </div>
+
+    <div ng-if="S == 1" class="row" style="padding-left:25px">
+      <div class="col col-33" style="padding: 27px 0 0 12px ;min-width:50px;font-size:16px">Jour</div>
+      <div class="col"  style="padding:2px 0 0 80px;font-weight:600;font-size:16px">
+       <md-input-container>
+            <md-select  ng-model="New_EL.day" placeholder="Choisir un jour">
+                <md-option ng-value="opt.number" ng-repeat="opt in daySelect">{{::opt.day }}</md-option>
+            </md-select>
+       </md-input-container>
+      </div>
+    </div>
+
+    <div ng-if="S == 2" class="row" style="padding-left:25px">
+      <div class="col col-33" style="padding: 27px 0 0 12px ;min-width:50px;font-size:16px">Date</div>
+        <div  class="col" style="padding:15px 0 0 17px;font-weight:600;font-size:16px">
+        <md-datepicker ng-model="New_EL.dateException"  md-placeholder="Date Exception" md-open-on-focus></md-datepicker>
+            </div>
+    </div>
+
+
+    <div ng-if="S == 2" class="row" style="padding-left:25px">
+      <div class="col col-33" style="padding: 27px 0 0 12px ;min-width:50px;font-size:16px">Raison</div>
+      <div class="col" style="padding:2px 0 0 10px;font-weight:600;font-size:16px">
+      <md-input-container >
+          <md-select required ng-model="New_EL.raison" placeholder="Choisir une raison" style = "min-width:200px!important">
+              <md-option ng-value="opt.id" ng-repeat="opt in $root.Raison" style="height:40px;">{{::opt.raison }}</md-option>
+          </md-select>
+      </md-input-container>
+      </div>
+    </div>
+
+
+     <div class="row">
+
+     </div>
+
+
+        </div>
+
+
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <!-- <md-button ng target="_blank" md-autofocus>
+        More on Wikipedia
+      </md-button> -->
+      <span flex></span>
+      <md-button ng-click="Close_Add_EL()">Annuler</md-button>
+      <md-button ng-disabled="New_EL.heureFin <= New_EL.heureDebut || myForm.$invalid" ng-click="Add_EL_Excep(New_EL)" >Ajouter</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

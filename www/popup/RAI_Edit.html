@@ -1,0 +1,54 @@
+<md-dialog ng-controller="AppCtrl" >
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <p class= "poptitle">Modifier une raison</p>
+        <span flex></span>
+        <!-- <md-button class="md-icon-button" >
+
+        </md-button> -->
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content" style="padding:0!important">
+
+    <div  class="col"  style="min-height: 50px;min-width: 500px;padding :0;" >
+      <!-- <input ng-model ="tmp_event.start._i"/> -->
+    <div class="row">
+      <div class="col col-20" style="padding: 27px 0 0 12px ;min-width:50px;font-size:16px">Raison</div>
+      <!-- <input datetime-picker ng-model="model" /> -->
+      <div class="col" style="padding:18px 0 0 10px;font-weight:600;font-size:16px">
+        <!-- <input style="padding-left:5px;width:200px;" ng-model ="Edit_Raison.raison"/> -->
+        <md-input-container style="padding-left:5px;width:350px;margin:0;">
+        <label>Raison</label>
+        <input ng-model="Edit_Raison.raison" required>
+      </md-input-container></div>
+</div>
+
+    <div class="row">
+
+     </div>
+
+     <div class="row">
+
+     </div>
+
+
+        </div>
+
+
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <!-- <md-button ng target="_blank" md-autofocus>
+        More on Wikipedia
+      </md-button> -->
+      <span flex></span>
+      <md-button ng-click="Close_Edit_EG()">Annuler</md-button>
+      <md-button ng-click="Del_RAI()">Supprimer</md-button>
+      <md-button ng-click="Edit_RAI_Apply()" ng-disabled="!Edit_Raison.raison"  md-autofocus>Modifier</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

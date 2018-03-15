@@ -1,10 +1,59 @@
 app
 .controller('AppCtrl', ['$filter','notify','$mdColorPalette','$ionicPopup','$ionicLoading','$ionicScrollDelegate', 'P' ,'$document', '$rootScope', '$scope', '$state', '$http', 'uiCalendarConfig', '$stateParams' ,'$ionicPopover' , '$mdDialog' , '$ionicListDelegate', '$mdDateLocale',
                function ($filter, notify, $mdColorPalette,$ionicPopup, $ionicLoading, $ionicScrollDelegate, P, $document, $rootScope, $scope,   $state,   $http,  uiCalendarConfig, $stateParams ,  $ionicPopover ,   $mdDialog , $ionicListDelegate, $mdDateLocale) {
+   //
+   // var loading_screen = pleaseWait({
+   //     logo: "#",
+   //     backgroundColor: '#CBDDFF',
+   //     loadingHtml: "<div class='spinner'><div class='cube1'></div><div class='cube2'></div></div>"
+   //   });
 
     $scope.eventSources = []
     var Period ;
     var a,b ; //view start and end date
+
+    //initialise la vue calendaire
+      $scope.init_VC = function()
+      {
+
+          $scope.titre_vue = "Vue Calendaire";
+          $rootScope.S = 2 ; // S =2 , Vue calendaire
+          console.log("VC")
+          $scope.state = "VC" ;
+          $scope.uiConfig.calendar.columnFormat = 'ddd D/M' // format column avec jour/mois
+          $scope.uiConfig.calendar.editable = $scope.uiConfig.calendar.editable2
+          init_List_EG_GF()
+
+      }
+
+      $scope.init_AD = function()
+      {
+          $scope.state = "AD" ;
+          $rootScope.S = 4 ; // Vue Administration
+      }
+
+      $scope.init_EG = function()
+      {
+
+          $rootScope.S = 3 ; // Vue Administration
+          $scope.state = "EG" ;
+          Read_List_EG();
+          // Read_List_CT();
+      }
+
+      //initialise la vue Evenement recurrent
+      $scope.init_ER = function()
+      {
+
+        console.log("ER")
+          $scope.titre_vue = "Programme standard";
+          $rootScope.S = 1 ;// S = 1 , Vue recurrents
+          $scope.state = "ER" ;
+          $scope.uiConfig.calendar.columnFormat = 'ddd' //format column avec nom jour seul
+          $scope.uiConfig.calendar.editable = $scope.uiConfig.calendar.editable1
+
+
+      }
 
     function init_List_EG_GF()
     {
@@ -60,9 +109,7 @@ app
                             })
                             console.log($scope.EG_GF)
                             console.log($scope.List_EG_GF_Model)
-
                           })
-
     }
 
      // $ionicLoading.show({ //Spinner au chargement initial
@@ -122,7 +169,7 @@ app
                       $scope.uiConfig.calendar.editable1 = false;
                       if (!$rootScope.DROITS.FPHVS)
                       {  $rootScope.ERROR = "Affichage des Programmes Horaires non authorisé" ; $state.go('ERROR') }
-
+                   // loading_screen.finish()
               });
      }
 
@@ -284,7 +331,6 @@ app
                      }
                      }
                      $ionicLoading.hide()
-                     // console.log(tab)
                      $scope.$broadcast('scroll.refreshComplete');//Stop the ion-refresher from spinning
         $rootScope.List_ALL_CT = tab ;
         $rootScope.List_CT = tab ;
@@ -385,45 +431,6 @@ app
                 { day : 'Dimanche' , number : 7 }
   ]
 
-//initialise la vue calendaire
-  $scope.init_VC = function()
-  {
-      $scope.titre_vue = "Vue Calendaire";
-      $rootScope.S = 2 ; // S =2 , Vue calendaire
-      console.log("VC")
-      $scope.state = "VC" ;
-      $scope.uiConfig.calendar.columnFormat = 'ddd D/M' // format column avec jour/mois
-      $scope.uiConfig.calendar.editable = $scope.uiConfig.calendar.editable2
-      init_List_EG_GF()
-
-  }
-
-  $scope.init_AD = function()
-  {
-      $scope.state = "AD" ;
-      $rootScope.S = 4 ; // Vue Administration
-  }
-
-  $scope.init_EG = function()
-  {
-      $rootScope.S = 3 ; // Vue Administration
-      $scope.state = "EG" ;
-      Read_List_EG();
-      // Read_List_CT();
-  }
-
-  //initialise la vue Evenement recurrent
-  $scope.init_ER = function()
-  {
-    console.log("ER")
-      $scope.titre_vue = "Programme standard";
-      $rootScope.S = 1 ;// S = 1 , Vue recurrents
-      $scope.state = "ER" ;
-      $scope.uiConfig.calendar.columnFormat = 'ddd' //format column avec nom jour seul
-      $scope.uiConfig.calendar.editable = $scope.uiConfig.calendar.editable1
-
-
-  }
 
   $scope.Del_EL_Excep = function(tmp_EL)
      {

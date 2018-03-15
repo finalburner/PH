@@ -1,6 +1,6 @@
 "use strict";//----------------------OPC-------------------------
 /////////////// =========================== ////////////////////
-const Version = "1.3.10"
+const Version = "1.3.11"
 console.log("API Programme Horaire version : " + Version )
 /////////////// =========================== ////////////////////
 const P = require(process.cwd()+ '/config.ini')
@@ -9,7 +9,7 @@ var sql = require('mssql');
 var express = require('express');
 var fs = require('fs') ;
 var app = express();
-var cors = require('cors')
+var cors = require('cors');
 var path = require('path');
 var bodyParser = require("body-parser");
 var morgan = require('morgan');             // log requests to the console (express4)
@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use( '/' , express.static(__dirname + '/www/'));
 app.use( '/js/param.js' , express.static(process.cwd()+ '/config_ihm.ini'));
+
 // console.log(process.cwd())
 // app.use(function(req, res, next){
 //   res.status(404);
@@ -41,19 +42,6 @@ app.use(cors({ origin: '*' }));
 // app.options('*', cors());
 app.use(cors({optionsSuccessStatus: 200 }));
 app.options('*', cors({optionsSuccessStatus: 200 }));
-// app.use(cors())
-/* GET home page. */
-// html_app.get('/*', function(req, res, next) {
-//   //Path to your main file
-//   res.status(200).sendFile(path.join(__dirname,'/'));
-// });
-
-
-//
-// html_app.get('/', function(req, res) {
-//   console.log(__dirname)
-//     res.sendFile(path.join(__dirname + "/index.html"));
-// });
 
 // // PORT STANDARD DEJA OUVERT
 // process.on('uncaughtException', function(err) { //Deal with used port 3000 : switch to 3001
@@ -65,6 +53,7 @@ app.options('*', cors({optionsSuccessStatus: 200 }));
 //              });
 //            }
 //          });
+
 //PORT SSL DEJA OUVERT
  process.on('uncaughtException', function(err) { //Deal with used port 3000 : switch to 3001
              if(err.errno === 'EADDRINUSE' && err.port === P.SRV.HTTPS_PORT)
@@ -75,12 +64,6 @@ app.options('*', cors({optionsSuccessStatus: 200 }));
               });
               }
         });
-
-
-// app.get('*',function(req,res){
-//     res.sendFile('index.html',{'root': __dirname });
-// });
-
 
 
 sql.connect(P.SQL).then(function() {
@@ -145,21 +128,6 @@ app.post('/api/DEFCOM' , function(req, res) {
     })
 });
 
-
-
-
-  // var request = new sql.Request()
-  // request.input('groupeFonctionnel', sql.NVarChar,  b.ID)
-  // request.input('jourDebut', sql.DateTime, new Date(b.Period.dateDebut_Year,b.Period.dateDebut_Month,b.Period.dateDebut_Day,8,0,0))
-  // request.input('jourFin', sql.DateTime, new Date(b.Period.dateFin_Year,b.Period.dateFin_Month,b.Period.dateFin_Day,8,0,0))
-  // // request.output('output_parameter', sql.Int)
-  // request.execute('dbo.usp_HorairesGroupeFonctionnelDatesComplet', (err, result) => {
-  //     if (err) { console.dir(err); res.send(err) }
-  //     else
-  //     res.json(result[0])
-  // })
-// console.dir(req.body)
-//
 app.post('/api/EG/List_CT', function(req, res) {
   var b = req.body;
   console.log(b)
@@ -408,7 +376,7 @@ app.post('/api/TR/Del', function(req, res) {
 app.post('/api/EG/Check_EG_GF', function(req, res) {
   var b = req.body;
   console.log(b)
-    if (b.C)
+    if (b.C == 1 || b.C == true )
     {
       var request = new sql.Request()
       request.input('Login', sql.NVarChar, b.Login )
@@ -418,7 +386,7 @@ app.post('/api/EG/Check_EG_GF', function(req, res) {
           if (err) { console.dir(err); res.send(err) }
           else res.send()
     })}
-    else
+    else if (b.C == 0 || b.C == false )
     {
       var request = new sql.Request()
       request.input('Login', sql.NVarChar, b.Login )

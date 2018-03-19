@@ -638,7 +638,7 @@ $scope.EG_Day_Color = [false,false,false,false,false,false,false]
 //A la fin du rendu du calendrier, colorier les jours en EG
 $scope.eventAfterAllRender= function(view){
     for (i=0;i<7;i++)
-    if ($scope.EG_Day_Color[i]) $('#d' + i ).css({'background-color': 'orange'});
+    if ($scope.EG_Day_Color[i] == true) $('#d' + i ).css({'background-color': 'orange'});
     else $('#d' + i ).css({'background-color': '#E9EDF2'});
 }
 
@@ -963,10 +963,10 @@ $scope.Close_editPopup = function() {
               console.log($scope.EG_Day_Color)
               console.log(data)
 
-
+             $scope.eventAfterAllRender()
                  }
               })
-         .error(function(data) {
+          .error(function(data) {
              notify('Erreur /Api/Event')
              console.log(data);
          });
@@ -1007,11 +1007,18 @@ $scope.Close_editPopup = function() {
          }
         }
 
+  $scope.show = function()
+  {
+  console.log($scope.tmp_EG)
+  console.log($scope.tmp_EG.dateDebut.valueOf())
+  console.log($scope.tmp_EG.dateFin.valueOf())
+
+  }
 
   var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Décembre"]
 
 
-      $scope.viewRender = function(view, element) {
+    $scope.viewRender = function(view, element) {
       $scope.info = view
     }
 
@@ -1091,8 +1098,10 @@ $scope.Close_editPopup = function() {
       {
         $ionicListDelegate.closeOptionButtons();
         $scope.tmp_EG = item;
-        $scope.tmp_EG.Login = $rootScope.Login;
         console.log($scope.tmp_EG)
+        console.log($rootScope.Login)
+        $scope.tmp_EG.Login = $rootScope.Login;
+
         $mdDialog.show({
                   templateUrl: 'popup/EG_Edit.html',
                   parent: angular.element(document.body),
@@ -1193,7 +1202,7 @@ $scope.Close_editPopup = function() {
                 });
         }
 
-        $scope.Del_EG = function(item)
+        $scope.Del_EG = function(item )
         {
           $mdDialog.hide();
           $http.post( API_PH  + '/api/EG/Del' , { id : item.id, Login : $rootScope.Login} )
@@ -1205,23 +1214,33 @@ $scope.Close_editPopup = function() {
                 });
          }
 
-       $scope.CT_Show = function(item)
-       {
-         if ($scope.EG_Selected_item =item)
-         {
-              $ionicLoading.show({ //Spinner au chargement initial
-                content: 'Loading', animation: '', showBackdrop: true,
-                duration: 5000, maxWidth: 200,  showDelay: 0
-              });
-              console.log(item)
+        $("#alpha").on("mousedown", function($event) {
+          $scope.which = event.which
+          console.log(event.which)
+          $rootScope.$on('itemSaved', function () {
+                if($scope.which == 1 ) //left click
+                  {
 
-              $scope.EG_Selected = item.id ;
-              $scope.EG_Selected_item = item;
-              $scope.EG_Clicked = true;
-              Read_List_CT()
-              if ($scope.CT_Selected && $scope.EG_Selected)
-              Read_List_GF($scope.CT_Selected,$scope.EG_Selected)
-          }
+                         $ionicLoading.show({ //Spinner au chargement initial
+                           content: 'Loading', animation: '', showBackdrop: true,
+                           duration: 5000, maxWidth: 200,  showDelay: 0
+                         });
+
+                         $scope.EG_Clicked = true;
+                         Read_List_CT()
+                         if ($scope.CT_Selected && $scope.EG_Selected)
+                         Read_List_GF($scope.CT_Selected,$scope.EG_Selected)
+                  }
+                  else
+                  event.preventDefault();
+            })
+          });
+
+       $scope.CT_Show = function(item)
+        {
+        $scope.EG_Selected_item = item;
+        $scope.EG_Selected = item.id ;
+        $rootScope.$broadcast('itemSaved');
         }
 
       $scope.GF_Show = function(CT)
@@ -1248,6 +1267,7 @@ $scope.Close_editPopup = function() {
        $scope.menuOptions_EG = [
           {    text: 'Modifier',
                click: function ($itemScope, $event, modelValue, text, $li) {
+                 console.log($event)
                $scope.Edit_EG($scope.EG_Selected_item)
                }
            },

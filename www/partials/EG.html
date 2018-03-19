@@ -9,28 +9,28 @@
     </label>
   </div>
 
-    <div class="row"  style="padding:0 !important;margin : 0 0 0 5px;background-color='#F7f7f7';width:360px!important">
-      <!-- <ion-content scroll = 'false' on-scroll="getScrollPosition()" delegate-handle="listct" style="margin: 50px 0 0 5px; max-height:93vh ;max-width:360px!important;" > -->
+  <div class="row"  style="padding:0 !important; margin : 0 0 0 5px;background-color='#F7f7f7';width:360px!important">
+    <!-- <ion-content scroll = 'false' on-scroll="getScrollPosition()" delegate-handle="listct" style="margin: 50px 0 0 5px; max-height:93vh ;max-width:360px!important;" > -->
 
-      <ion-scroll on-scroll="getScrollPosition()" delegate-handle="listct" style="margin: 3px 0 0 5px; height:93vh ;width:350px!important;overflow-scroll:false;" has-bouncing="false">
-        <ion-list scroll="false" style="height:93vh!important">
-            <ion-item  style= "padding:0; max-width:350px !important;" ng-class="isItemExpanded(item) ? 'expand-itemct2' : 'expand-itemct'"
-             ng-repeat="item in $root.List_CT "  class="item col"   >
+    <ion-scroll on-scroll="getScrollPosition()" delegate-handle="listct" style="margin: 3px 0 0 5px; height:93vh ;width:350px!important;overflow-scroll:false;" has-bouncing="false">
+      <ion-list scroll="false" style="height:93vh!important">
+          <ion-item  style= "padding:0; max-width:350px !important;" ng-class="isItemExpanded(item) ? 'expand-itemct2' : 'expand-itemct'"
+           ng-repeat="item in $root.List_CT "  class="item col">
 
-                   <div class="row PH_CT_bar" ng-click="expand_CT(item)" >
-                       <div class="col col-80 PH_CT_Type">CT {{::item.CT}} </div>
-                       <div class="col col-20 PH_arrow"><i class="icon AL_bar_icon" ng-class="isItemExpanded(item) ? 'ion-chevron-up' : 'ion-chevron-down'"></i></div>
-                   </div>
-                   <div ng-if="isItemExpanded(item)" ng-repeat="item_GF in item.GF" >
-                         <div ng-class="{'GF_Selected': $root.GF_Selected == item_GF.ID}"  style="padding:0" class = "row PH_GF" ng-click="l(item_GF);PH_CT_GF(item_GF.ID,item_GF.E,item_GF.I,item.CT,item_GF.DEFCOM)" >
-                         <p class="col col-80" style="padding:4px 0 0 0 ">{{::item_GF.I}}</p>
-                         <i ng-show='item_GF.DEFCOM' style="margin:2px 0 0 0 " class="icon ion-alert-circled icon_alert_def col col-10"></i>
-                         </div>
-                   </div>
-         </ion-item>
-        </ion-list>
-      </ion-scroll>
-     </div>
+                 <div class="row PH_CT_bar" ng-click="expand_CT(item)" >
+                     <div class="col col-80 PH_CT_Type">CT {{item.CT}} </div>
+                     <div class="col col-20 PH_arrow"><i class="icon AL_bar_icon" ng-class="isItemExpanded(item) ? 'ion-chevron-up' : 'ion-chevron-down'"></i></div>
+                 </div>
+                 <div ng-if="isItemExpanded(item)" ng-repeat="item_GF in item.GF" >
+                       <div ng-class="{'GF_Selected': $root.GF_Selected == item_GF.ID}"  style="padding:0" class = "row PH_GF" ng-click="l(item_GF);PH_CT_GF(item_GF.ID,item_GF.E,item_GF.I,item.CT,item_GF.DEFCOM)" >
+                       <p class="col col-80" style="padding:4px 0 0 0 ">{{::item_GF.I}}</p>
+                       <i ng-show='item_GF.DEFCOM' style="margin:2px 0 0 0 " class="icon ion-alert-circled icon_alert_def col col-10"></i>
+                       </div>
+                 </div>
+       </ion-item>
+      </ion-list>
+    </ion-scroll>
+   </div>
 
   </div>
 
@@ -63,9 +63,9 @@
   </ion-item>
 </ion-list>
 </ion-scroll> -->
-<ion-scroll  style="max-height: 500px;max-width:270px">
+<ion-scroll  id="alpha" style="max-height: 500px;max-width:270px">
 <ion-list >
-  <ion-item context-menu="menuOptions_EG" ng-style="isEGSelected(item) && {'background-color': '#CBDDFF'}"  ng-repeat="item in $root.ExpG | filter : search1 | orderBy : 'dateDebut'" ng-click="CT_Show(item)" style="min-width:250px;">
+  <ion-item  context-menu="menuOptions_EG" ng-style="isEGSelected(item) && {'background-color': '#CBDDFF'}"  ng-repeat="item in $root.ExpG | filter : search1 | orderBy : 'dateDebut'" ng-click="CT_Show(item)" style="min-width:250px;">
     <p >{{item.nom}}</p>
         <!-- <ion-option-button class="bouton-assertive"  ng-click="Del_EG(item)">Supprimer</ion-option-button> -->
         <!-- <ion-option-button class="button-positive"   ng-click="Edit_EG(item)">Modifier</ion-option-button> -->
@@ -91,13 +91,13 @@
   </div>
 
 <div class="row" style="max-height: 500px;width:270px" >
-  <ion-scroll  style="max-height: 500px;width:254px">
+  <ion-scroll  style="height:500px;width:254px">
   <ion-list >
     <ion-item class="row" ng-if="CT.length == 0" style="padding:10px 0 10px 10px;font-size:14px" style="min-width:250px;">
       Sélectionnez une exception globale   </ion-item>
     <ion-item  class="row"  style="padding :0;font-size:14px "
-     ng-style="(isCTSelected(item) && {'background-color': '#CBDDFF'})|| item.P && {'background-color': '#E3E3F3'}" ng-repeat="item in CT | filter : search2 | orderBy : 'L'"  style="min-width:250px;">
-      <div class="col col-90"  style="padding:10px 0 10px 10px;" ng-click="GF_Show(item.L)">CT {{::item.L}}</div>
+     ng-style="(isCTSelected(item) && {'background-color': '#CBDDFF'})|| item.P && {'background-color': '#E3E3F3'}" collection-repeat="item in CT | filter : search2 | orderBy : 'L'"  style="min-width:250px;">
+      <div class="col col-90"  style="padding:10px 0 10px 10px;" ng-click="GF_Show(item.L)">CT {{item.L}}</div>
       <div class="col col-10" style="padding:10px 0 10px 0;width:20px;">
     <md-checkbox aria-label="" style="margin:0 0 0  -10px" ng-checked= "item.C" ng-click="item.C=!item.C;item.P=item.C;Check_CT(item)" class="indigo" style="margin:0;"></md-checkbox>
       </div>
@@ -118,12 +118,12 @@
   </div>
 
 <div class="row" style="max-height: 500px;width:470px" >
-  <ion-scroll  style="max-height: 500px;width:400px">
+  <ion-scroll  style="width:400px;height:500px">
   <ion-list >
     <ion-item class="row" ng-if="GF.length == 0" style="padding:10px 0 10px 10px;font-size:14px" style="min-width:250px;">
       Sélectionnez un CT et une exception globale    </ion-item>
-    <ion-item class="row" style="padding:10px 0 10px 0;font-size:14px" ng-repeat="item in GF | filter : search3 " style="min-width:250px;">
-    <div class="col col-90" style="padding:0 0 0 10px;">{{::item.I}}</div>
+    <ion-item class="row" style="padding:10px 0 10px 0;font-size:14px" collection-repeat="item in GF | filter : search3 " style="min-width:250px;">
+    <div class="col col-90" style="padding:0 0 0 10px;">{{item.I}}</div>
     <div class="col col-10" style="padding:0;width:20px;">
   <md-checkbox ng-checked="item.C" ng-click="item.C=!item.C;Check_EG_GF(item);" class="indigo" style="margin:0;"></md-checkbox>
     </div>
